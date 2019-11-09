@@ -1,0 +1,45 @@
+{
+    "bot": {
+        "token": "TOKEN",
+        "prefix": "oinkbot ",
+        "channels": {
+            "rules": "0000",
+            "issues": "0000",
+            "suggestions": "0000",
+            "botchat": "0000",
+            "logchannel": "0000",
+            "auditlogchannel": "0000",
+            "announcementchannel": "0000"
+        },
+        "roles": {
+            "staff": "0000",
+            "admin": "0000",
+            "owner": "0000",
+            "donator": "0000",
+            "event": "0000"
+        },
+        "integrations": {
+            "enable": {
+                "mysql": true,
+                "trello": true
+            },
+            "mysql": {
+                "host": "localhost",
+                "user": "username",
+                "password": "shhh",
+                "database": "ob_database"
+            },
+            "trello": {
+                "key": "0000",
+                "secret": "shhh",
+                "boards": {
+                    "issues": "0000",
+                    "suggestions": "0000"
+                }
+            }
+        }
+    },
+    "web": {
+        "secret": {"0000": level}
+    }
+}

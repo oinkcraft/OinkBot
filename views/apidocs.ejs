@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>API</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1>Welcome</h1>
+    <div>
+        <h2>Welcome to the OinkBot API version <%= version %></h2>
+        <p>This is a rest API, that allows you to interact with the OinkBot discord bot.</p>
+
+    </div>
+
+    <div class="documentation">
+        <% for(var i = 0; i < endpoints.length; i++) { %>
+        <div class="container">
+            <div>
+                <div class="codeblock">
+                    <div class="part heading">
+                        <h1> <%= endpoints[i].name %> [<%= endpoints[i].type.toUpperCase() %>]</h1>
+                    </div>
+                    <div class="part endpoint">
+                        <code class="path"><%= endpoints[i].endpoint %></code>
+                    </div>
+                </div>
+            </div>
+            <div class="expl divider">
+                <div class="part"><%= endpoints[i].explanation %></div>
+            </div>
+            <div class="expl divider">
+                <div class="part">
+                    <% if (endpoints[i].required.length > 0) { %>
+
+                    <h2>Required arguments</h2>
+                    <ul>
+                        <%for (var j = 0; j < endpoints[i].required.length; j++) { %>
+                        <li><%= endpoints[i].required[j].id %></li>
+                        <% } %>
+                    </ul>
+                    <% }%>
+
+                    <% if (endpoints[i].optional.length > 0) { %>
+                    <h2>Optional arguments</h2>
+                    <ul>
+                        <%for (var j = 0; j < endpoints[i].optional.length; j++) { %>
+                        <li><%= endpoints[i].optional[j].id %></li>
+                        <% } %>
+                    </ul>
+                    <% }%>
+                    <% if ((endpoints[i].required.length > 0) || (endpoints[i].optional.length > 0)) { %>
+                    <h2>Descriptions</h2>
+                    <%for (var j = 0; j < endpoints[i].required.length; j++) { %>
+                    <p><b><%= endpoints[i].required[j].id %></b> &mdash; <%= endpoints[i].required[j].description %></p>
+                    <% } %>
+                    <%for (var j = 0; j < endpoints[i].optional.length; j++) { %>
+                    <p><b><%= endpoints[i].optional[j].id %></b> &mdash; <%= endpoints[i].optional[j].description %></p>
+                    <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+
+
+
+    </div>
+</body>
+
+</html>
