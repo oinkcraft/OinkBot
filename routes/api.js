@@ -17,11 +17,11 @@ const endpointsList = [
       },
       {
         id: 'channelID',
-        description: 'The ID of the channel you wish to send a message to'
+        description: 'The ID of the channel you wish to send a message to.'
       },
       {
         id: 'message',
-        description: 'The message you wish to send'
+        description: 'The message you wish to send.'
       }],
     optional: [],
     explanation: `Allows you to send messages to a given channel, as the bot. Useful for minigame plugins, that need to announce a winner or lack of players.`
@@ -37,11 +37,11 @@ const endpointsList = [
       },
       {
         id: 'userID',
-        description: 'The ID of the user you wish to send a message to'
+        description: 'The ID of the user you wish to send a message to.'
       },
       {
         id: 'message',
-        description: 'The message you wish to send'
+        description: 'The message you wish to send.'
       }],
     optional: [],
     explanation: `Allows you to send messages to a given user, as the bot. Useful for giving out debug information from plugins.`
