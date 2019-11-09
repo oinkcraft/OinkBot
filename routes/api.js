@@ -6,8 +6,9 @@ const client = require('../bot/app').client;
 let version = '1.0.0'
 const endpointsList = [
   {
-    name: 'Send message',
+    name: 'Send message to channel',
     type: 'post',
+    level: 1,
     endpoint: '/1/sendMessage?token{token}&channel={channelID}&msg={message}',
     required: [
       {
@@ -23,8 +24,28 @@ const endpointsList = [
         description: 'The message you wish to send'
       }],
     optional: [],
-    explanation: `Allows you to send messages as the bot.`
-  }
+    explanation: `Allows you to send messages to a given channel, as the bot. Useful for minigame plugins, that need to announce a winner or lack of players.`
+  }, {
+    name: 'Send message to user',
+    type: 'post',
+    level: 1,
+    endpoint: '/1/sendMessage?token{token}&user={userID}&msg={message}',
+    required: [
+      {
+        id: 'token',
+        description: 'The developer token, you have been given.'
+      },
+      {
+        id: 'userID',
+        description: 'The ID of the user you wish to send a message to'
+      },
+      {
+        id: 'message',
+        description: 'The message you wish to send'
+      }],
+    optional: [],
+    explanation: `Allows you to send messages to a given user, as the bot. Useful for giving out debug information from plugins.`
+  },
 ]
 router.use('/1', apiVer1)
 router.get('/', function (req, res, next) {

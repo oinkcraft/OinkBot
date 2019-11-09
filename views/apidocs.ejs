@@ -28,7 +28,8 @@
                 </div>
             </div>
             <div class="expl divider">
-                <div class="part"><%= endpoints[i].explanation %></div>
+                <div class="part"><%= endpoints[i].explanation%> <br>This function requires an API key with the level of at least <%= endpoints[i].level %>. </div>
+
             </div>
             <div class="expl divider">
                 <div class="part">
@@ -63,10 +64,6 @@
             </div>
         </div>
         <% } %>
-
-
-
-
     </div>
 </body>
 
