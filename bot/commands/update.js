@@ -7,6 +7,7 @@ function getUpdate() {
 
 module.exports.execute = async (client, message, args) => {
     if (message.member.roles.get(config.bot.roles.owner)) {
+        await message.channel.send('🔁 Updating. Please wait...')
         getUpdate();
     }
 }
