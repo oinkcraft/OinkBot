@@ -4,14 +4,14 @@ var apiVer1 = require('./api/1')
 const client = require('../bot/app').client;
 
 const version = {
-  ver_1: '1.0.0'
+  ver_1: '1'
 }
 const endpointsListVersion1 = [
   {
     name: 'Send message to channel',
     type: 'post',
     level: 1,
-    endpoint: '/1/sendMessage?token{token}&channel={channelID}&msg={message}',
+    endpoint: '/1/sendMessage?token={token}&channel={channelID}&msg={message}',
     required: [
       {
         id: 'token',
@@ -31,7 +31,7 @@ const endpointsListVersion1 = [
     name: 'Send message to user',
     type: 'post',
     level: 1,
-    endpoint: '/1/sendMessage?token{token}&user={userID}&msg={message}',
+    endpoint: '/1/sendMessage?token={token}&user={userID}&msg={message}',
     required: [
       {
         id: 'token',
@@ -47,6 +47,18 @@ const endpointsListVersion1 = [
       }],
     optional: [],
     explanation: `Allows you to send messages to a given user, as the bot. Useful for giving out debug information from plugins.`
+  }, {
+    name: 'API and bot version',
+    type: 'get',
+    level: 0,
+    endpoint: '/1/version',
+    required: [
+
+    ],
+    optional: [
+
+    ],
+    explanation: `Gets the current commit and API version of the API and OinkBot`
   },
 ]
 router.use('/1', apiVer1)

@@ -4,6 +4,14 @@ const config = require('../../config.json');
 var router = express.Router();
 const client = require('../../bot/app').client;
 
+function getCommitHash() {
+    return require('child_process').execSync('git rev-parse HEAD').toString();
+}
+
+function getCommitMessage() {
+    return require('child_process').execSync('git log -1 --pretty=%B').toString();
+}
+
 const hash = x => crypto.createHash('sha256').update(x, 'utf8').digest('hex');
 
 router.get('/', (req,res) => res.status(200).send({
@@ -65,6 +73,15 @@ router.post('/sendMessage', (req, res) => {
             message: 'Malformed request body.'
         })
     }
-})
+});
+
+router.get('/version', (req, res) => {
+    res.status(200).send({
+        short_commit: getCommitHash().substring(0,7),
+        commit: getCommitHash(),
+        commit_message: getCommitMessage(),
+        api_version: "1.0.0"
+    })
+});
 
 module.exports = router;
