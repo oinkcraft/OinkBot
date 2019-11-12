@@ -3,8 +3,10 @@ var router = express.Router();
 var apiVer1 = require('./api/1')
 const client = require('../bot/app').client;
 
-let version = '1.0.0'
-const endpointsList = [
+const version = {
+  ver_1: '1.0.0'
+}
+const endpointsListVersion1 = [
   {
     name: 'Send message to channel',
     type: 'post',
@@ -50,13 +52,13 @@ const endpointsList = [
 router.use('/1', apiVer1)
 router.get('/', function (req, res, next) {
   res.render('api', {
-    version: version
+    version: version.ver_1
   });
 });
 router.get('/docs', function (req, res, next) {
   res.render('apidocs', {
-    version: version,
-    endpoints: endpointsList.sort((a, b) => a.name > b.name)
+    version: version.ver_1,
+    endpoints: endpointsListVersion1.sort((a, b) => a.name > b.name)
   });
 });
 
