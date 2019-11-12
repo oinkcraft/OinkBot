@@ -5,7 +5,12 @@ function getCommitHash() {
     return require('child_process').execSync('git rev-parse HEAD').toString().substring(0,7);
 }
 
+function getCommitMessage() {
+    return require('child_process').execSync('git log -1 --pretty=%B').toString();
+}
+
 const hash = getCommitHash();
+const msg = getCommitMessage();
 
 
 
@@ -15,6 +20,7 @@ module.exports.execute = async (client, message, args) => {
         .setTitle('Information about me')
         .setFooter('Want to help developing me? https://github.com/oinkcraft/OinkBot')
         .addField('My current version', hash, true)
+        .addField('Latest commit message is', msg, true)
         .addField('I am currently in development', 'This means my functionality is limited, as of right now.')
     await message.channel.send(infoEmbed);
 }
