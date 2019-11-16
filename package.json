@@ -16,5 +16,8 @@
     "morgan": "~1.9.1",
     "mysql": "^2.17.1",
     "trello": "^0.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0"
   }
 }
