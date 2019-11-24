@@ -2,6 +2,7 @@
     "bot": {
         "token": "TOKEN",
         "prefix": "oinkbot ",
+        "guild": "0000",
         "channels": {
             "rules": "0000",
             "issues": "0000",

@@ -28,9 +28,10 @@
                 </div>
             </div>
             <div class="expl divider">
-                <div class="part"><%= endpoints[i].explanation%> <br>This function requires an API key with the level of at least <%= endpoints[i].level %>. </div>
+                <div class="part"><p><%= endpoints[i].explanation%> <br>This function requires an API key with the level of at least <%= endpoints[i].level %>.</p></div>
 
             </div>
+            <% if ((endpoints[i].required.length > 0) || (endpoints[i].optional.length > 0)) { %>
             <div class="expl divider">
                 <div class="part">
                     <% if (endpoints[i].required.length > 0) { %>
@@ -51,7 +52,6 @@
                         <% } %>
                     </ul>
                     <% }%>
-                    <% if ((endpoints[i].required.length > 0) || (endpoints[i].optional.length > 0)) { %>
                     <h2>Descriptions</h2>
                     <%for (var j = 0; j < endpoints[i].required.length; j++) { %>
                     <p><b><%= endpoints[i].required[j].id %></b> &mdash; <%= endpoints[i].required[j].description %></p>
@@ -59,9 +59,9 @@
                     <%for (var j = 0; j < endpoints[i].optional.length; j++) { %>
                     <p><b><%= endpoints[i].optional[j].id %></b> &mdash; <%= endpoints[i].optional[j].description %></p>
                     <% } %>
-                    <% } %>
                 </div>
             </div>
+            <% } %>
         </div>
         <% } %>
     </div>
