@@ -21,10 +21,6 @@
         "\\w*ejaculat\\w*": [
             "sexual"
         ],
-        "\\w*damn\\w*": [
-            "inappropriate",
-            "blasphemy"
-        ],
         "\\w*f[a4]gg[o0]t\\w*": [
             "discriminatory"
         ],
@@ -339,10 +335,6 @@
         ],
         "cuntrag": [
             "insult"
-        ],
-        "dammit": [
-            "inappropriate",
-            "blasphemy"
         ],
         "dick": [
             "sexual",
