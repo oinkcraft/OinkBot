@@ -3,6 +3,7 @@
         "token": "TOKEN",
         "prefix": "oinkbot ",
         "guild": "0000",
+        "logchannel": "CHANNELID"
         "channels": {
             "rules": "0000",
             "issues": "0000",
