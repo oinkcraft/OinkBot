@@ -14,6 +14,6 @@ client.on("messageDelete", async msg => {
       .addField("Deleted By", entry.executor)
       .setFooter(`Message ID: ${msg.id} | Sender ID: ${msg.author.id}`);
   
-    let channel = msg.guild.channels.find(x => x.name === 'log-channel');
+    let channel = msg.guild.channels.find(x => x.id === logchannel);
     channel.send({embed});
   });
