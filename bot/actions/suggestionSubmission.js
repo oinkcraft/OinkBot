@@ -9,7 +9,7 @@ module.exports.checkEvent = async (client, message) => {
         let content = message.cleanContent.replace(/\n/g, '');
         const expression = /suggestion name:\s+(.+)MC username:\s+(.+)mc or discord:\s+(.+)Description:\s(.+)/iu;
         let match;
-        let response
+        let response;
         if ((match = expression.exec(content)) === null) {
             response = new Discord.RichEmbed()
                 .setAuthor('I did not understand that suggestion!', null, null)
