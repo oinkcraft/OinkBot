@@ -1,6 +1,5 @@
 const config = require('../../config.json');
 const IssueLog = require('../actions/issueSubmission');
-const SuggestionLog = require('../actions/suggestionSubmission');
 const SwearFilter = require('../actions/swearFilter')
 const _ = require('lodash');
 
@@ -10,7 +9,6 @@ module.exports = async (client, message) => {
 
     if (await SwearFilter.checkEvent(client, message)) { return; }
     if (await IssueLog.checkEvent(client, message)) { return; }
-    if (await SuggestionLog.checkEvent(client, message)) { return; }
     console.log('Message was not caught in an event.');
 
 

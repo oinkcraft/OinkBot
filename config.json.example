@@ -33,9 +33,12 @@
             "trello": {
                 "key": "0000",
                 "secret": "shhh",
-                "boards": {
-                    "issues": "0000",
-                    "suggestions": "0000"
+                "lists": {
+                    "issues": "0000"
+                },
+                "labels":{
+                    "suggestion": "0000",
+                    "issue": "0000"
                 }
             }
         }

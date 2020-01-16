@@ -63,7 +63,7 @@ module.exports.startup = () => {
             sqlAccess.end();
         }
     });
-    trello.addCard("Test", "Test", config.bot.integrations.trello.boards.issues).then(card => trello.deleteCard(card.id)).then(console.log("Connected to Trello.")).catch(rzn => console.log(rzn));
+    trello.addCard("Test", "Test", config.bot.integrations.trello.lists.issues).then(card => trello.deleteCard(card.id)).then(console.log("Connected to Trello.")).catch(rzn => console.log(rzn));
     client.login(config.bot.token)
         .then(() => console.log("Logged in!"))
         .catch(() => console.log("Failed to log in."));
