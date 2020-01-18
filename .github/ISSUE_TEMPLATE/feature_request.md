@@ -10,7 +10,7 @@ assignees: ''
 **Request**
 <!-- Here you will write what you want to suggest -->
 
-**Explain it to me like I was five**
+**Explain it to me like I'm five**
 <!-- Here you will explain it in such detail, that even a five year old kid would understand it -->
 
 **Commands**
