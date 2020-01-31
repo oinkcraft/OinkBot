@@ -4,27 +4,25 @@ module.exports.giveRole = async (reaction, user) => {
         if(reaction.message.id === config.bot.messages.worldroles){
             // Check which emote was added and assign the corresponding role
             let role;
-            console.log('1');
-            if(reaction.name === 'pick'){
+            // Not sure why, but triple affirmation (===) results in these comparisons not working.
+            if(reaction.emoji == '⛏️'){
                 role = reaction.message.guild.roles.find(role => role.id === config.bot.roles.towny);
             }
-            else if (reaction.name === 'crossed_swords'){
+            else if (reaction.emoji == '⚔️'){
                 role = reaction.message.guild.roles.find(role => role.id === config.bot.roles.factions);
             }
-            else if (reaction.name === 'art'){
+            else if (reaction.emoji == '🎨'){
                 role = reaction.message.guild.roles.find(role => role.id === config.bot.roles.creative);
             }
-            else if (reaction.name === 'person_running'){
+            else if (reaction.emoji == '🏃'){
                 role = reaction.message.guild.roles.find(role => role.id === config.bot.roles.parkour);
             }
-            else if (reaction.name === 'video_game'){
+            else if (reaction.emoji == '🎮'){
                 role = reaction.message.guild.roles.find(role => role.id === config.bot.roles.minigames);
-                console.log('2');
             } else {
-                console.log('3 - ' + reaction.name);
                 return;
             }
-            user.send('You have opted in to world notifications and given the ' + role + 'rank!');
+            user.send('> You have opted in to **' + role.name + '** world notifications!\n_To opt-out, simply remove your reaction._');
             await reaction.message.guild.fetchMember(user).then(activeMember => activeMember.addRole(role));
         }
     }
@@ -33,24 +31,24 @@ module.exports.giveRole = async (reaction, user) => {
         if(reaction.message.id === config.bot.messages.worldroles){
             // Check which emote was added and assign the corresponding role
             let role;
-            if(reaction.name === 'pick'){
+            if(reaction.emoji == '⛏️'){
                 role = reaction.message.guild.roles.find(role => role.id === config.bot.roles.towny);
             }
-            else if (reaction.name === 'crossed_swords'){
+            else if (reaction.emoji == '⚔️'){
                 role = reaction.message.guild.roles.find(role => role.id === config.bot.roles.factions);
             }
-            else if (reaction.name === 'art'){
+            else if (reaction.emoji == '🎨'){
                 role = reaction.message.guild.roles.find(role => role.id === config.bot.roles.creative);
             }
-            else if (reaction.name === 'person_running'){
+            else if (reaction.emoji == '🏃'){
                 role = reaction.message.guild.roles.find(role => role.id === config.bot.roles.parkour);
             }
-            else if (reaction.name === 'video_game'){
+            else if (reaction.emoji == '🎮'){
                 role = reaction.message.guild.roles.find(role => role.id === config.bot.roles.minigames);
             } else {
                 return;
             }
-            user.send('You have opted out of world notifications and the ' + role + 'rank has been removed!');
+            user.send('> You have opted out of **' + role.name + '** world notifications!\n_To opt-in, simply re-add your reaction._');
             await reaction.message.guild.fetchMember(user).then(activeMember => activeMember.removeRole(role));
         }
     }
