@@ -26,7 +26,9 @@ app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  next(createError(404));
+  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  console.log(ip)
+  res.status(404).send('You took a wrong turn somewhere.')
 });
 
 var server = app.listen(8080, () => console.log("app running on port.", server.address().port));
