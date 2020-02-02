@@ -17,7 +17,15 @@
             "admin": "0000",
             "owner": "0000",
             "donator": "0000",
-            "event": "0000"
+            "event": "0000",
+            "towny": "0000",
+            "factions": "0000",
+            "creative": "0000",
+            "parkour": "0000",
+            "minigames": "0000"
+        },
+        "messages": {
+            "worldroles": "0000"
         },
         "integrations": {
             "enable": {
