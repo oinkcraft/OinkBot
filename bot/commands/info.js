@@ -10,12 +10,16 @@ function getCommitMessage() {
 }
 
 const hash = getCommitHash();
-const msg = getCommitMessage();
+let msg = getCommitMessage();
 
 
 
 
 module.exports.execute = async (client, message, args) => {
+    if (msg.length > 300) {
+        msg = msg.substring(0, 300) + '...';
+    }
+
     let infoEmbed = new Discord.RichEmbed()
         .setTitle('Information about me')
         .setFooter('Want to help developing me? https://github.com/oinkcraft/OinkBot')
