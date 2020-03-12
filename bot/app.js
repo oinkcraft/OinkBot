@@ -30,6 +30,7 @@ module.exports.startup = () => {
 
     client.commands = new Discord.Collection();
     client.aliases = new Discord.Collection();
+    client.prefix = config.bot.prefix;
 
     fs.readdir('./bot/commands/', (err, files) => {
         if (err) console.error(err);

@@ -15,8 +15,8 @@ module.exports = async (client, message) => {
     if (/oinkbot,?\s.+/iu.test(message.content) && message.content.toLowerCase().startsWith("oinkbot")) {
         console.log('Command detected: ' + message.content);
 
-        shortCommand = message.content.slice(8).trim().split(' ')[0];
-        command = message.content.slice(8).trim();
+        let shortCommand = message.content.slice(8).trim().split(' ')[0];
+        let command = message.content.slice(8).trim();
         let aliasLength;
         if (command) {
             let commandFile;
@@ -27,10 +27,10 @@ module.exports = async (client, message) => {
                     commandFile = client.commands.get(shortCommand) || client.commands.get(client.aliases.get(alias))
                 }
             }));
-            let args = command.substr(aliasLength, command.length).trim().split(/\s+/);
+            let args = command.substr(aliasLength, command.length).trim().split(/\s+/g);
             args = args.filter(elm => elm !== "");
             if (commandFile) {
-                commandFile.execute(client, message, args);
+                await commandFile.execute(client, message, args);
             }
         }
     }
