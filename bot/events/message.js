@@ -21,7 +21,7 @@ module.exports = async (client, message) => {
         if (command) {
             let commandFile;
             client.commands.get(client.aliases.keyArray().forEach(alias => {
-                if (command.includes(alias)) {
+                if (command == alias) {
                     aliasLength = alias.length;
                     console.log(alias + '  ' + aliasLength);
                     commandFile = client.commands.get(shortCommand) || client.commands.get(client.aliases.get(alias))
