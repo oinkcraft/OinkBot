@@ -10,6 +10,6 @@ module.exports.execute = async (client, message, args) => {
 
 module.exports.config = {
     name: 'GitHub',
-    aliases: ['get github', 'are you opensource?', 'show me your code', 'what is your code?', 'how were you made?', 'where do you live?'],
+    aliases: ['get github', 'are you opensource?', 'show me your code', 'what is your code?', 'how were you made?', 'where do you live?', 'can i help?', 'can i develop you?'],
     description: 'See my wiring!',
 }
