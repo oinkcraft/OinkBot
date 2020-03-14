@@ -14,7 +14,7 @@ module.exports = async (client, message) => {
 
     if (/oinkbot,?\s.+/iu.test(message.content) && message.content.toLowerCase().startsWith("oinkbot")) {
         console.log('Command detected: ' + message.content);
-
+        
         let shortCommand = message.content.slice(8).trim().split(' ')[0];
         let command = message.content.slice(8).trim();
         let aliasLength;
