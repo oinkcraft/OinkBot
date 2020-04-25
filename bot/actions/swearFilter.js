@@ -4,6 +4,7 @@ const swears = require('../util/swears.json');
 module.exports.checkEvent = async (client, message) => {
     await message.cleanContent.toLowerCase().split(/\s+/).forEach(word => {
         if (swears['simple'][word]) {
+            console.log(word);
             message.delete(0);
             message.reply('Swearing is not allowed 👀');
             const response = new Discord.RichEmbed().setAuthor('Please refrain from swearing')
@@ -17,6 +18,7 @@ module.exports.checkEvent = async (client, message) => {
         } else {
             for (var key in swears['regex']) {
                 if (word.match(new RegExp(key))) {
+                    console.log(word);
                     message.delete(0);
                     message.reply('Swearing is not allowed 👀');
                     const response = new Discord.RichEmbed().setAuthor('Please refrain from swearing')
