@@ -3,6 +3,8 @@ const swears = require('../util/swears.json');
 
 module.exports.checkEvent = async (client, message) => {
     await message.cleanContent.toLowerCase().split(/\s+/).forEach(word => {
+        if (word.toLowerCase() == 'constructor')
+            return;
         if (swears['simple'][word]) {
             console.log(word);
             message.delete(0);
