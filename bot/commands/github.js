@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 module.exports.execute = async (client, message, args) => {
-    let infoEmbed = new Discord.RichEmbed()
+    let infoEmbed = new Discord.MessageEmbed()
         .setTitle('I am open source!')
         .addField('Want to help developing me?', 'https://github.com/oinkcraft/OinkBot', true)
         .addField('I am currently in development', 'This means my functionality is limited, as of right now... But you can change that!',true);
