@@ -13,7 +13,6 @@ function trelloWebhookHandler(req, res) {
     }
 }
 
-console.log(sock)
 const trello = new Trello(config.bot.integrations.trello.key, config.bot.integrations.trello.secret);
 
 trello.addWebhook()

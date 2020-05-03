@@ -6,7 +6,7 @@ module.exports.execute = async (client, message, args) => {
             color: 0x2ed32e,
             fields: [{
                 name: "Ping, Pong!",
-                value: "My Ping: " + Math.round(client.ping) + ' ms'
+                value: "My Ping: " + Math.round(client.ws.ping) + ' ms'
             }
             ],
         }
