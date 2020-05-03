@@ -6,9 +6,11 @@ function getUpdate() {
 }
 
 module.exports.execute = async (client, message, args) => {
-    if (message.member.roles.get(config.bot.roles.owner)) {
+    if (message.member.roles.cache.get(config.bot.roles.owner)) {
         await message.channel.send('🔁 Updating. Please wait...')
         getUpdate();
+    } else {
+        await message.channel.send('❌ Unfortunately you do not have the right role to perform that command');
     }
 }
 

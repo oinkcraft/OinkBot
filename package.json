@@ -6,16 +6,14 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "cookie-parser": "^1.4.5",
     "debug": "~4.1.1",
     "discord.js": "^12.2.0",
-    "ejs": "~3.0.2",
-    "express": "~4.17.1",
     "http-errors": "~1.7.3",
     "lodash": "^4.17.15",
     "morgan": "~1.10.0",
     "mysql": "^2.18.1",
-    "trello": "^0.10.1-rc.0"
+    "socket.io": "^2.3.0",
+    "trello-node-api": "0.0.9"
   },
   "devDependencies": {
     "eslint": "^6.8.0"

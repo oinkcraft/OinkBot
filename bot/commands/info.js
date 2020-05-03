@@ -20,7 +20,7 @@ module.exports.execute = async (client, message, args) => {
         msg = msg.substring(0, 300) + '...';
     }
 
-    let infoEmbed = new Discord.RichEmbed()
+    let infoEmbed = new Discord.MessageEmbed()
         .setTitle('Information about me')
         .setFooter('Want to help developing me? https://github.com/oinkcraft/OinkBot')
         .addField('My current version', hash, true)

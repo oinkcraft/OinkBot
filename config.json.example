@@ -6,7 +6,6 @@
         "channels": {
             "rules": "0000",
             "issues": "0000",
-            "suggestions": "0000",
             "botchat": "0000",
             "logchannel": "0000",
             "auditlogchannel": "0000",
