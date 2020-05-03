@@ -18,22 +18,21 @@ module.exports = async (client, message) => {
         let shortCommand = message.content.slice(8).trim().split(' ')[0];
         let command = message.content.slice(8).trim();
         let aliasLength;
+        let args;
         if (command) {
             let commandFile;
             client.commands.get(client.aliases.keyArray().forEach(alias => {
-                if (command == alias) {
-                    aliasLength = alias.length;
+                aliasLength = alias.length;
+                if (command == alias || command.includes(alias)) {
+                    args = command.substr(aliasLength, command.length).trim().split(/\s+/g);
                     console.log(alias + '  ' + aliasLength);
                     commandFile = client.commands.get(shortCommand) || client.commands.get(client.aliases.get(alias))
                 }
             }));
-            let args = command.substr(aliasLength, command.length).trim().split(/\s+/g);
-            args = args.filter(elm => elm !== "");
             if (commandFile) {
+                args = args.filter(elm => elm !== "");
                 await commandFile.execute(client, message, args);
             }
         }
     }
-
-
 }
