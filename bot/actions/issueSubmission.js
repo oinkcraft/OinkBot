@@ -3,19 +3,23 @@ const Trello = require('trello');
 const Discord = require('discord.js');
 const http = require('http').createServer(trelloWebhookHandler);
 const sock = require('socket.io')(http);
-
+const callbackURL = `${config.web.callbackurl}:4556/trello`
 http.listen(4556);
+
+console.log(http.address())
 
 function trelloWebhookHandler(req, res) {
     if (req.url === '/trello') {
         let body = [];
         req.on('data', chunk => body.push(chunk)).on('end', () => body = Buffer.concat(body).toJSON())
+        res.send("Hello world")
+        console.log(body);
     }
 }
 
 const trello = new Trello(config.bot.integrations.trello.key, config.bot.integrations.trello.secret);
 
-trello.addWebhook()
+// trello.addWebhook('Callback for removing cards', callbackURL)
 
 module.exports.checkEvent = async (client, message) => {
     if (message.channel.id === config.bot.channels.issues) {
@@ -35,7 +39,7 @@ module.exports.checkEvent = async (client, message) => {
                 .addField('Yours was', message.cleanContent, true)
                 .setColor('#ff0000')
             message.member.createDM().then(channel => channel.send(response));
-            await message.delete({wait: 500});
+            await message.delete({ timeout: 500 });
             return true;
         } else {
             // Format the message to fit properly on the card
@@ -54,7 +58,7 @@ module.exports.checkEvent = async (client, message) => {
                     .setAuthor('Please make sure you ONLY "Issue" or "Suggestion" when submitting your report.', null, null)
                     .addField('Here\'s your message to try again:\n ', message.cleanContent)
                     .setColor('#ff0000')));
-                await message.delete({wait: 500});
+                await message.delete({ timeout: 500 });
                 return true;
             }
 
@@ -69,8 +73,7 @@ module.exports.checkEvent = async (client, message) => {
             });
             response = new Discord.MessageEmbed()
                 .setAuthor('Thank you!')
-                .addField('Your issue was reported', `Thank you for your submission! Please contact a staff member if this is an URGENT issue, such as players fighting or an extremely game-breaking bug.
-                It is NOT URGENT if this is just something small being broken or a feature request. Thank you for your cooperation!`)
+                .addField('Your issue was reported', `Thank you for your submission! Please contact a staff member if this is an URGENT issue, such as players fighting or an extremely game-breaking bug.\nIt is NOT URGENT if this is just something small being broken or a feature request. Thank you for your cooperation!`)
                 .addField('Your suggestion was:', message.cleanContent)
                 .setColor('#00ff00')
             message.member.createDM().then(channel => channel.send(response));
