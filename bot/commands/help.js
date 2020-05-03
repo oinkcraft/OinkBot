@@ -3,7 +3,7 @@ const fs = require('fs');
 
 module.exports.execute = async (client, message, args) => {
 
-    let embed = new Discord.RichEmbed();
+    let embed = new Discord.MessageEmbed();
     embed.setTitle('Help message!').setDescription('These are the available commands:');
     client.commands.forEach(command => {
         let count = command.config.aliases.length;
