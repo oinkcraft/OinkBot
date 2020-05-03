@@ -73,7 +73,7 @@ module.exports.checkEvent = async (client, message) => {
             });
             response = new Discord.MessageEmbed()
                 .setAuthor('Thank you!')
-                .addField('Your issue was reported', `Thank you for your submission! Please contact a staff member if this is an URGENT issue, such as players fighting or an extremely game-breaking bug.\nIt is NOT URGENT if this is just something small being broken or a feature request. Thank you for your cooperation!`)
+                .addField('Your issue was reported', 'Thank you for your submission! Please contact a staff member if this is an URGENT issue, such as players fighting or an extremely game-breaking bug.\nIt is NOT URGENT if this is just something small being broken or a feature request. Thank you for your cooperation!', false)
                 .addField('Your suggestion was:', message.cleanContent)
                 .setColor('#00ff00')
             message.member.createDM().then(channel => channel.send(response));
