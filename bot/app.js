@@ -2,12 +2,10 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const config = require('../config.json');
 const MySQL = require('mysql');
-const Trello = require('trello');
 
 // Construct the required clients etc.
 const client = new Discord.Client();
 const sqlAccess = MySQL.createConnection(config.bot.integrations.mysql);
-const trello = new Trello(config.bot.integrations.trello.key, config.bot.integrations.trello.secret);
 
 
 module.exports.sqlAccess = sqlAccess;
@@ -64,7 +62,6 @@ module.exports.startup = () => {
             sqlAccess.end();
         }
     });
-    trello.addCard("Test", "Test", config.bot.integrations.trello.lists.issues).then(card => trello.deleteCard(card.id)).then(console.log("Connected to Trello.")).catch(rzn => console.log(rzn));
     client.login(config.bot.token)
         .then(() => console.log("Logged in!"))
         .catch(() => console.log("Failed to log in."));

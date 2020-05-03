@@ -1,24 +1,10 @@
 const config = require('../../config.json');
-const Trello = require('trello');
+const Trello = require('trello-node-api');
 const Discord = require('discord.js');
-const http = require('http').createServer(trelloWebhookHandler);
-const sock = require('socket.io')(http);
-const callbackURL = `${config.web.callbackurl}:4556/trello`
-http.listen(4556);
 
-console.log(http.address())
-
-function trelloWebhookHandler(req, res) {
-    if (req.url === '/trello') {
-        let body = [];
-        req.on('data', chunk => body.push(chunk)).on('end', () => body = Buffer.concat(body).toJSON())
-        res.send("Hello world")
-        console.log(body);
-    }
-}
 
 const trello = new Trello(config.bot.integrations.trello.key, config.bot.integrations.trello.secret);
-
+// console.log(trello)
 // trello.addWebhook('Callback for removing cards', callbackURL)
 
 module.exports.checkEvent = async (client, message) => {
@@ -29,15 +15,12 @@ module.exports.checkEvent = async (client, message) => {
         let response;
         if ((match = expression.exec(content)) === null) {
             response = new Discord.MessageEmbed()
-                .setAuthor('I did not understand that suggestion!', null, null)
-                .addField('Format was invalid', `_Please use the following (but no bold)_
+                .setAuthor('I did not understand that suggestion!', null, null).addField('Format was invalid', `_Please use the following (but no bold)_
                 **Submission Type:** ['Issue' or 'Suggestion']
                 **Title of Submission:** [Something Broke!]
                 **Username:** [Mobkinz78]
                 **MC or Discord:** [Minecraft/Discord]
-                **Description:** `, true)
-                .addField('Yours was', message.cleanContent, true)
-                .setColor('#ff0000')
+                **Description:** `, true).addField('Yours was', message.cleanContent, true).setColor('#ff0000')
             message.member.createDM().then(channel => channel.send(response));
             await message.delete({ timeout: 500 });
             return true;
@@ -66,11 +49,13 @@ module.exports.checkEvent = async (client, message) => {
             const cardTitle = match[2];
 
             // Add the card to the trello board
-            const cardDescription = fullMessage.substring(fullMessage.indexOf('Username:'))
-                .replace('Username:', '**Submitted by:**').replace('MC or Discord', '**Relevant Platform:**').replace('Description:', '\n**Description of Issue:**\n');
-            trello.addCard(cardTitle, cardDescription, config.bot.integrations.trello.lists.issues).then(card => {
-                trello.addLabelToCard(card.id, labelId);
-            });
+            const cardDescription = fullMessage.substring(fullMessage.indexOf('Username:')).replace('Username:', '**Submitted by:**').replace('MC or Discord', '**Relevant Platform:**').replace('Description:', '\n**Description of Issue:**\n');
+            trello.card.create({name: cardTitle, desc: cardDescription, idLabels: [labelId], idList: config.bot.integrations.trello.lists.issues})
+            // trello.addCard(cardTitle, cardDescription, config.bot.integrations.trello.lists.issues)
+            // .then(card => {
+            //     console.log(card)
+            //     trello.addLabelToCard(card.id, labelId);
+            // });
             response = new Discord.MessageEmbed()
                 .setAuthor('Thank you!')
                 .addField('Your issue was reported', 'Thank you for your submission! Please contact a staff member if this is an URGENT issue, such as players fighting or an extremely game-breaking bug.\nIt is NOT URGENT if this is just something small being broken or a feature request. Thank you for your cooperation!', false)
