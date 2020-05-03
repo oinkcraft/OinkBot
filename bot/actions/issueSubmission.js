@@ -16,7 +16,7 @@ function trelloWebhookHandler(req, res) {
 console.log(sock)
 const trello = new Trello(config.bot.integrations.trello.key, config.bot.integrations.trello.secret);
 
-trello.addWebhook
+trello.addWebhook()
 
 module.exports.checkEvent = async (client, message) => {
     if (message.channel.id === config.bot.channels.issues) {
