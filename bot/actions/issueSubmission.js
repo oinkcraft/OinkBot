@@ -50,8 +50,11 @@ module.exports.checkEvent = async (client, message) => {
 
             // Add the card to the trello board
             const cardDescription = fullMessage.substring(fullMessage.indexOf('Username:')).replace('Username:', '**Submitted by:**').replace('MC or Discord', '**Relevant Platform:**').replace('Description:', '\n**Description of Issue:**\n');
-            let card = await trello.card.create({ name: cardTitle, desc: cardDescription, idLabels: [labelId], idList: config.bot.integrations.trello.lists.issues })
-            console.log(card)
+            let card = await trello.card.create({ name: cardTitle, desc: cardDescription, idLabels: [labelId], idList: config.bot.integrations.trello.lists.issues }).catch(res => {
+                message.channel.send(res).then(msg => msg.delete({timeout: 5000}));
+                return;
+            });
+
             const newMessage = new Discord.MessageEmbed().setAuthor(message.author.username, message.author.displayAvatarURL())
                 .setTitle(cardTitle)
                 .setDescription(`The ${cardType.toLowerCase().includes('iss') ? 'issue' : 'suggestion'} has been logged with ID [${card.idShort}](${card.url}) on Trello\n\n**Name:** ${match[3]}`)
