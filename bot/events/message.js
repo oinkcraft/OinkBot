@@ -4,12 +4,12 @@ const SwearFilter = require('../actions/swearFilter')
 
 module.exports = async (client, message) => {
     if (!message.guild || message.author.bot) return;
-    console.log('Message received.');
-    console.log('Message was not caught in an event.');
+    // console.log('Message received.');
+    // console.log('Message was not caught in an event.');
 
 
     if (/oinkbot,?\s.+/iu.test(message.content) && message.content.toLowerCase().startsWith("oinkbot")) {
-        console.log('Command detected: ' + message.content);
+        // console.log('Command detected: ' + message.content);
 
         let shortCommand = message.content.slice(8).trim().split(' ')[0];
         let command = message.content.slice(8).trim();
@@ -21,7 +21,7 @@ module.exports = async (client, message) => {
                 aliasLength = alias.length;
                 if (command == alias || command.includes(alias)) {
                     args = command.substr(aliasLength, command.length).trim().split(/\s+/g);
-                    console.log(alias + '  ' + aliasLength);
+                    console.log('Alias='+alias + ' AliasLength=' + aliasLength + ' Args='+args);
                     commandFile = client.commands.get(shortCommand) || client.commands.get(client.aliases.get(alias))
                 }
             }));
