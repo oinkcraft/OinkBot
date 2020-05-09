@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 
 module.exports.execute = async (client, message, args) => {
-
+    await message.delete();
     let embed = new Discord.MessageEmbed();
     embed.setTitle('Help message!').setDescription('These are the available commands:');
     client.commands.forEach(command => {
@@ -10,7 +10,8 @@ module.exports.execute = async (client, message, args) => {
         embed.addField(command.config.name, `\`${client.prefix}${command.config.aliases[Math.floor(Math.random() * count)]}\`\n${command.config.description}`)
 
     });
-    return await message.author.send(embed);
+    await message.author.send(embed);
+    await message.channel.send('I have sent you a list of my commands in a DM!').then(msg => msg.delete({timeout: 5000}))
 
 }
 

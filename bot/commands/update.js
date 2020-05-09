@@ -10,7 +10,7 @@ module.exports.execute = async (client, message, args) => {
         await message.channel.send('🔁 Updating. Please wait...')
         getUpdate();
     } else {
-        await message.channel.send('❌ Unfortunately you do not have the right role to perform that command');
+        await message.channel.send('❌ Unfortunately you do not have the right role to perform that command').then(msg => msg.delete({timeout: 5000}));
     }
 }
 

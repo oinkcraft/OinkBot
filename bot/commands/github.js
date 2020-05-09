@@ -5,7 +5,7 @@ module.exports.execute = async (client, message, args) => {
         .setTitle('I am open source!')
         .addField('Want to help developing me?', 'https://github.com/oinkcraft/OinkBot', true)
         .addField('I am currently in development', 'This means my functionality is limited, as of right now... But you can change that!',true);
-    message.channel.send(infoEmbed);
+    message.channel.send(infoEmbed).then(msg => msg.delete({timeout: 10000}));
 }
 
 module.exports.config = {

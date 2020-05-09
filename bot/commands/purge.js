@@ -5,7 +5,7 @@ module.exports.execute = async (client, message, args) => {
 
     if (message.member.roles.cache.get(config.bot.roles.owner)) {
         if (args == null) {
-            await message.channel.send('❌ Please provide an amount of messages to purge.')
+            await message.channel.send('❌ Please provide an amount of messages to purge.').then(msg => msg.delete({timeout: 5000}))
         } else if (args[0] == 'all') {
             let x = await message.channel.messages.fetch();
             await message.channel.bulkDelete(message.channel.messages.cache, false).then(messages => console.log(`Bulk deleted ${messages.size} messages`)).catch(() => x.forEach(message => message.delete()))

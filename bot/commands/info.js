@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const fs = require('fs')
 
 function getCommitHash() {
     return require('child_process').execSync('git rev-parse HEAD').toString().substring(0,7);
@@ -26,7 +25,8 @@ module.exports.execute = async (client, message, args) => {
         .addField('My current version', hash, true)
         .addField('Latest commit message is', msg, true)
         .addField('I am currently in development', 'This means my functionality is limited, as of right now.')
-    await message.channel.send(infoEmbed);
+    await message.delete();
+    await message.channel.send(infoEmbed).then(msg => msg.delete({timeout: 10000}));
 }
 
 module.exports.config = {

@@ -10,7 +10,7 @@ module.exports.execute = async (client, message, args) => {
             }
             ],
         }
-    });
+    }).then(msg => msg.delete({timeout: 5000}));
 }
 
 module.exports.config = {
