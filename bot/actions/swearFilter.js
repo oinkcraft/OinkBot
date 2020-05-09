@@ -7,8 +7,8 @@ module.exports.checkEvent = async (client, message) => {
             return;
         if (swears['simple'][word]) {
             console.log(word);
-            message.delete({wait: 0});
-            message.reply('Swearing is not allowed 👀');
+            message.delete({timeout: 0});
+            message.reply('Swearing is not allowed 👀').then(msg => msg.delete({timeout: 5000}));
             const response = new Discord.MessageEmbed().setAuthor('Please refrain from swearing')
                 .addField('Your message was:', message.cleanContent, true)
                 .addField('You were caught on:', word)
@@ -21,8 +21,8 @@ module.exports.checkEvent = async (client, message) => {
             for (var key in swears['regex']) {
                 if (word.match(new RegExp(key))) {
                     console.log(word);
-                    message.delete({wait: 0});
-                    message.reply('Swearing is not allowed 👀');
+                    message.delete({timeout: 0});
+                    message.reply('Swearing is not allowed 👀').then(msg => msg.delete({timeout: 5000}));
                     const response = new Discord.MessageEmbed().setAuthor('Please refrain from swearing')
                         .addField('Your message was:', message.cleanContent, true)
                         .addField('You were caught on:', word)

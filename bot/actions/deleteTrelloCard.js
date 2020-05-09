@@ -9,8 +9,7 @@ module.exports.delete = (client, message) => {
             console.log(cardID)
             trello.card.del(cardID).catch((err) => {
                 console.log(err)
-                message.channel.send('❌ I was unable to delete that card on Trello. Please do it manually'
-                )
+                message.channel.send('❌ I was unable to delete that card on Trello. Please do it manually').then(msg => msg.delete({timeout: 5000}))
             })
         }
     }
