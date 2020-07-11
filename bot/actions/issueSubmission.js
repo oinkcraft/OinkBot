@@ -26,7 +26,7 @@ module.exports.checkEvent = async (client, message) => {
             return true;
         } else {
             // Format the message to fit properly on the card
-            const fullMessage = String(message);
+            const fullMessage = message.cleanContent;
 
             // Get information required for label
             let labelId = "0000";
