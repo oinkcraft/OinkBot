@@ -22,7 +22,7 @@ module.exports = async (client, message) => {
     .then(async(logChannel)=>{
       await logChannel.send(response);
       for(let i=0;i<message.embeds.length;i++){
-        await logChannel.send(`Embed #${i} from message ${message.id}:`,{embed:message.embeds[i]});
+        await logChannel.send(`Embed #${i+1} from message ${message.id}:`,{embed:message.embeds[i]});
       }
     });
 }
