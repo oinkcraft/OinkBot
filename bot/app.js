@@ -50,18 +50,19 @@ module.exports.startup = () => {
     });
 
     // Check connections and log in.
-    sqlAccess.connect(err => {
-        if (err) {
-            console.log('Failed to connect to database.');
-            console.log(err.code);
-            console.log(err.errno);
-            console.log(err.sqlMessage);
+    if (config.bot.integrations.enable.mysql)
+        sqlAccess.connect(err => {
+            if (err) {
+                console.log('Failed to connect to database.');
+                console.log(err.code);
+                console.log(err.errno);
+                console.log(err.sqlMessage);
 
-        } else {
-            console.log('Connected to database.');
-            sqlAccess.end();
-        }
-    });
+            } else {
+                console.log('Connected to database.');
+                sqlAccess.end();
+            }
+        });
     client.login(config.bot.token)
         .then(() => console.log("Logged in!"))
         .catch(() => console.log("Failed to log in."));
