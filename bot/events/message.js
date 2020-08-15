@@ -1,4 +1,3 @@
-const config = require('../../config.json');
 const IssueLog = require('../actions/issueSubmission');
 const SwearFilter = require('../actions/swearFilter')
 
