@@ -6,7 +6,7 @@ module.exports.execute = async (client, message, args) => {
         if (args.length == 0 || !message.mentions.first) { await message.channel.send('Sorry but you need to mention someone to unmute them!') } else {
             let role = message.guild.roles.cache.get(config.bot.roles.muted)
             let user = message.mentions.members.first()
-            user.roles.add(role)
+            user.roles.remove(role)
             await message.channel.send(`Unmuted user: ${user}`)
         }
     } else {
