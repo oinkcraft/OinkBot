@@ -7,7 +7,7 @@ module.exports.execute = async (client, message, args) => {
             let role = message.guild.roles.cache.get(config.bot.roles.muted)
             let user = message.mentions.members.first()
             user.roles.add(role)
-            await message.channel.send(`Muted user: ${user}`)
+            await message.channel.send(`Unmuted user: ${user}`)
         }
     } else {
         await message.channel.send('You do not have permissions for that.')
