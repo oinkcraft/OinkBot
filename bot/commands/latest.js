@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const request = require('request');
 
 module.exports.execute = async (client, message, args) => {
-    request('https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCNmheQMf9sK1Axv3NCEhbSA&maxResults=1&q=%5BOinkcraft%5D&type=video&key=[REPLACE WITH YOUTUBE API KEY]', function (error, response, data) {
+    request('https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCNmheQMf9sK1Axv3NCEhbSA&maxResults=1&q=%5BOinkcraft%5D&type=video&key=' + config.bot.integrations.youtube.key, function (error, response, data) {
         response.setEncoding('utf8')
         if (!error && response.statusCode == 200) {
             let obj = JSON.parse(data)
