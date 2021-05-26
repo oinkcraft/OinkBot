@@ -9,7 +9,8 @@
             "botchat": "0000",
             "logchannel": "0000",
             "auditlogchannel": "0000",
-            "announcementchannel": "0000"
+            "announcementchannel": "0000",
+            "contentnotifchannel": "0000"
         },
         "roles": {
             "staff": "0000",
@@ -46,6 +47,21 @@
                 "labels":{
                     "suggestion": "0000",
                     "issue": "0000"
+                }
+            },
+            "youtube": {
+                "key": "0000",
+                "playlistIDs": {
+                    "lifestyle": "UUh7mi5sI3BSzKReLzXpgimA",
+                    "devlog": "PLOny7uVQmd7FXlaZzUu29LL474yoM6i5k",
+                    "cowdino": "PL3L3JHrBafNwB_jKc0EPe31Pdjx0dRFCv",
+                    "vgt": "PL3L3JHrBafNwB_jKc0EPe31Pdjx0dRFCv"
+                },
+                "notifRoles": {
+                    "lifestyle": "0000",
+                    "devlog": "0000",
+                    "cowdino": "0000",
+                    "vgt": "0000"
                 }
             }
         }
