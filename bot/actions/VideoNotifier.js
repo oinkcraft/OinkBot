@@ -224,7 +224,7 @@ function start(clientRef) {
     // Run checks every hour and send message if the latest video is different (1hr == 1000 * 3600 milliseconds)
     // You can assign the function to a variable in case we need to be able to yeet it later. Maybe optimize to stop on nights or something
     
-    setInterval(getLatestVids, 4000)
+    setInterval(getLatestVids, 1000 * 1800) // Check every 30 mins
 }
 
 module.exports.start = start;
