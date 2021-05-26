@@ -19,7 +19,7 @@ async function getLatestLifestyleVid(client) {
         // Devlog video check
         let latestExistingVideoID = latestVideoIds["latestVideos"].devlog
         if(latestVidInPlaylist.id === latestExistingVideoID) {
-            return
+            return 0
         } else {
             // Save video id and title
             let vidID = latestVidInPlaylist.id
@@ -44,7 +44,7 @@ async function getLatestLifestyleVid(client) {
         // Normal video check
         let latestExistingVideoID = latestVideoIds["latestVideos"].lifestyle
         if(latestVidInPlaylist.id === latestExistingVideoID) {
-            return
+            return 0
         } else {
             // Save video id and title
             let vidID = latestVidInPlaylist.id
@@ -81,7 +81,7 @@ async function getLatestCowdinoVid(client) {
         // VGT video check
         let latestExistingVideoID = latestVideoIds["latestVideos"].vgt
         if(latestVidInPlaylist.id === latestExistingVideoID) {
-            return
+            return 0
         } else {
             // Save video id and title
             let vidID = latestVidInPlaylist.id
@@ -107,7 +107,7 @@ async function getLatestCowdinoVid(client) {
         // Normal video check
         let latestExistingVideoID = latestVideoIds["latestVideos"].cowdino
         if(latestVidInPlaylist.id === latestExistingVideoID) {
-            return
+            return 0
         } else {
             // Save video id and title
             let vidID = latestVidInPlaylist.id
@@ -211,10 +211,15 @@ async function getLatestDevlog(client) {
 let client = {}
 async function getLatestVids(){
     console.log("Checking for latest videos...")
-    getLatestLifestyleVid(client);
+    let lfVids = getLatestLifestyleVid(client);
     //getLatestDevlog(client);
-    getLatestCowdinoVid(client);
+    let caVids = getLatestCowdinoVid(client);
     //getLatestVGT(client);
+    if (lfVids == caVids == 0) {
+        console.log("No latest videos found.")
+    } else {
+        console.log("Latest vids found! Messages posted to channel.")
+    }
 }
 
 // Start function and exporting the page
@@ -223,7 +228,7 @@ function start(clientRef) {
     client = clientRef
     // Run checks every hour and send message if the latest video is different (1hr == 1000 * 3600 milliseconds)
     // You can assign the function to a variable in case we need to be able to yeet it later. Maybe optimize to stop on nights or something
-    
+    getLatestVids()
     setInterval(getLatestVids, 1000 * 1800) // Check every 30 mins
 }
 
