@@ -15,8 +15,7 @@
     "lodash": "^4.17.21",
     "morgan": "~1.10.0",
     "mysql": "^2.18.1",
-    "request": "^2.88.2",
-    "socket.io": "^2.4.1",
+    "socket.io": "^2.4.0",
     "trello-node-api": "0.0.9"
   },
   "devDependencies": {
