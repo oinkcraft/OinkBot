@@ -101,6 +101,7 @@ async function getLatestCowdinoVid(client) {
                     throw err;
                 }
             })
+            return 1
         } 
     } else {
 
@@ -127,6 +128,7 @@ async function getLatestCowdinoVid(client) {
                     throw err;
                 }
             })
+            return 1
         } 
     }
 
