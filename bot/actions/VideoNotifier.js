@@ -39,6 +39,7 @@ async function getLatestLifestyleVid(client) {
                     throw err;
                 }
             })
+            return 1
         } 
     } else {
         // Normal video check
@@ -64,6 +65,7 @@ async function getLatestLifestyleVid(client) {
                     throw err;
                 }
             })
+            return 1
         } 
     }
 }
