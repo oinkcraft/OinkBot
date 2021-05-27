@@ -66,4 +66,5 @@ module.exports.startup = () => {
     client.login(config.bot.token)
         .then(() => console.log("Logged in!"))
         .catch(() => console.log("Failed to log in."));
+    
 }

@@ -7,7 +7,7 @@ module.exports.execute = async (client, message, args) => {
         response.setEncoding('utf8')
         if (!error && response.statusCode == 200) {
             let obj = JSON.parse(data)
-            await message.channel.send("Here is the latest video related to Oinkcraft: https://www.youtube.com/watch?v=" + obj.items[0].id.videoId)
+            message.channel.send("Here is the latest video related to Oinkcraft: https://www.youtube.com/watch?v=" + obj.items[0].id.videoId)
         }
     });
 }
