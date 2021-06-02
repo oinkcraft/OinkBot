@@ -90,7 +90,7 @@ async function getLatestCowdinoVid(client) {
             let vidTitle = latestVidInPlaylist.title
     
             // Construct the message
-            let msg = `<@&${config.bot.integrations.youtube.notifRoles.lifestyle}> **NEW VIDEO GAME THERAPY!**\n\n_${vidTitle}_\n\n:link: https://www.youtube.com/watch?v=${vidID}`
+            let msg = `<@&${config.bot.integrations.youtube.notifRoles.vgt}> **NEW VIDEO GAME THERAPY!**\n\n_${vidTitle}_\n\n:link: https://www.youtube.com/watch?v=${vidID}`
     
             // Send the video to the channel
             client.channels.cache.get(config.bot.channels.contentnotifchannel).send(msg)
@@ -117,7 +117,7 @@ async function getLatestCowdinoVid(client) {
             let vidTitle = latestVidInPlaylist.title
 
             // Construct the message
-            let msg = `<@&${config.bot.integrations.youtube.notifRoles.lifestyle}> **NEW COWDINO ARCADE VIDEO!**\n\n_${vidTitle}_\n\n:link: https://www.youtube.com/watch?v=${vidID}`
+            let msg = `<@&${config.bot.integrations.youtube.notifRoles.cowdino}> **NEW COWDINO ARCADE VIDEO!**\n\n_${vidTitle}_\n\n:link: https://www.youtube.com/watch?v=${vidID}`
 
             // Send the video to the channel
             client.channels.cache.get(config.bot.channels.contentnotifchannel).send(msg)
