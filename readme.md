@@ -1,7 +1,4 @@
-# OinkBot
-
-This is the repository for the brand new OinkBot.
-This one features an API, that allows the bot to interact with plugins and other services.
+# DEPRECATED OinkBot
 
 ## Requirements
 
